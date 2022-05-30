@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <style></style>
+
+  <body>
+    <div id="total-div">
+      <h3 id="total_amount">
+        <!--Show bucket total here, do not add anything only Total value. Not even "Total - 1200Rs" but like this "1200" -->
+      </h3>
+    </div>
+    <div id="bucket">
+      <!--Show all coffee added to bucket here-->
+      <!-- add an remove button to each coffee so that you can remove that item from bucket, give the button HTML id as 'remove_coffee' -->
+    </div>
+
+    <!-- checkout link  -->
+    <a href="checkout.html">Checkout</a>
+  </body>
+</html>
+<script>
+  var total=0;
+ function display(){
+    // event.preventDefault()
+    var d=JSON.parse(localStorage.getItem("coffee")) || [];
+
+    d.forEach(function(el,index){
+      var b=document.createElement("div")
+      var t=document.createElement("h4")
+      t.innerText=el.name
+      var d=document.createElement("img")
+      d.src=el.image
+     
+    
+      var p=document.createElement("p")
+      p.innerText=el.price
+      total=total+ +(p.innerText)
+     
+      var btn=document.createElement("button")
+      btn.innerText="Remove";
+      btn.addEventListener("click",function(){
+          remove(index)
+      })
+      b.append(t,d,p,btn)
+      document.querySelector("#bucket").append(b)
+      
+      
+    })
+    if(total!=undefined){
+      document.querySelector("#total_amount").append(total)
+}
+ }
+display();
+
+function remove(index){
+    var d=JSON.parse(localStorage.getItem("coffee")) || [];
+
+    var done= d.filter(function(el,i){
+        
+            return i!=index
+        
+
+        
+
+    })
+    console.log(done)
+    localStorage.setItem("coffee",JSON.stringify(done))
+    display();
+    window.location.reload();
+
+}
+
+
+</script>
+

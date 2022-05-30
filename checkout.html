@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Checkout</title>
+  </head>
+
+  <body>
+    <div id="order-form">
+      <!--Add your form html element here-->
+      <input type="name" placeholder="enter your name">
+      <input type="number" placeholder="enter your number">
+      <input type="name" placeholder="enter your address">
+      <button id="confirm">Confirm</button>
+      <!--In form, give #name,#number and #address as HTML id's to relevant input elements -->
+      <!-- confirm button with id "confirm" -->
+    </div>
+  </body>
+</html>
+<script>
+  document.querySelector("#confirm").addEventListener("click",function(){
+      setTimeout(function(){
+        alert("Your order is accepted")
+      },000)
+      setTimeout(function(){
+        alert("Your order is being prepare")
+      },3000)
+      setTimeout(function(){
+        alert("Your order is being packed")
+      },8000)
+      setTimeout(function(){
+        alert("Your order is out of delivery")
+      },10000)
+      setTimeout(function(){
+        alert("Order delivered")
+      },12000)
+  })
+  
+</script>
